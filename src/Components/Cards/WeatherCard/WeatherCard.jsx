@@ -2,17 +2,17 @@ import {getCurrentWeather} from "../../../utils/utils";
 import {useEffect, useState} from "react";
 import style from './WeatherCard.module.css'
 
-const WeatherCard = () => {
+const WeatherCard = ({ cityName }) => {
     const [currentWeather, setCurrentWeather] = useState({});
 
     useEffect(() => {
-        getCurrentWeather()
+        getCurrentWeather(cityName)
             .then(currentWeather => setCurrentWeather(currentWeather))
     }, [])
     return (
         <div className={style.cardContainer}>
             {
-                currentWeather ?
+                currentWeather.temperature ?
                     <div>
                         <div className={style.title}>
                             <div className={style.temperature}>
@@ -28,7 +28,7 @@ const WeatherCard = () => {
                         </div>
                     </div>
                     :
-                    <div>
+                    <div className={style.description}>
                         Something went wrong
                     </div>
             }

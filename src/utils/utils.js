@@ -3,14 +3,14 @@ export const uppercaseFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const getCurrentWeather = async (weatherProperties) => {
+export const getCurrentWeather = async (weatherCity) => {
 
     const weatherAPI = {
         key: '70a15b1ebfe99ea0b2a4bad8ac95c116',
         base: 'http://api.openweathermap.org/data/2.5/'
     };
 
-    const currentCity = 'New York';
+    const currentCity = weatherCity;
     let currentWeather = {
         city: null,
         temperature: null,
@@ -21,7 +21,6 @@ export const getCurrentWeather = async (weatherProperties) => {
     await fetch(`${weatherAPI.base}weather?q=${currentCity}&lang=ru&units=metric&APPID=${weatherAPI.key}`)
         .then(res => res.json())
         .then(weatherData => {
-            console.log(weatherData)
             currentWeather =  {
                 city: weatherData.name,
                 temperature: `${Math.round(weatherData.main.temp)}°`,

@@ -1,8 +1,9 @@
 
 .cardContainer{
     padding: 15px;
-    width: 250px;
     height: 150px;
+    margin: 15px;
+    max-width: max-content;
     display: flex;
     align-items: center;
     justify-content: center;
