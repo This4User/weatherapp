@@ -11,6 +11,7 @@ const SearchBar = ({value, onChange, onClick}) => {
                     onChange(e.target.value)
                 }}/>
             <button
+                disabled={ value === ''}
                 className={style.button}
                 onClick={() => {
                     onClick()

@@ -9,8 +9,12 @@ const WeatherContainer = () => {
     const [cities, setCities] = useState([]);
     const [currentCity, setCurrentCity] = useState('');
 
+    const removeCity = (removedCity) => {
+        setCities(cities.filter(city => city !== removedCity))
+    }
+
     useEffect(() => {
-        setCities([])
+        setCities(['Москва', 'Питер', 'New York'])
     }, [])
 
     return (
@@ -18,14 +22,18 @@ const WeatherContainer = () => {
             <SearchBar
                 value={currentCity}
                 onChange={setCurrentCity}
-                onClick={()=>{
+                onClick={() => {
                     setCities([...cities, currentCity]);
                     setCurrentCity('');
                 }}
             />
             <div className={style.cardsContainer}>
                 {
-                    cities.map(city => <WeatherCard cityName={city} key={city}/>)
+                    cities.map(city => <WeatherCard
+                        cityName={city}
+                        onClose={removeCity}
+                        key={city}
+                    />)
                 }
             </div>
 

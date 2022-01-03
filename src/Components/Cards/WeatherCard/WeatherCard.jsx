@@ -2,15 +2,23 @@ import {getCurrentWeather} from "../../../utils/utils";
 import {useEffect, useState} from "react";
 import style from './WeatherCard.module.css'
 
-const WeatherCard = ({ cityName }) => {
+const WeatherCard = ({ cityName, onClose }) => {
     const [currentWeather, setCurrentWeather] = useState({});
-
+    const currentCity = cityName;
     useEffect(() => {
         getCurrentWeather(cityName)
             .then(currentWeather => setCurrentWeather(currentWeather))
     }, [])
     return (
         <div className={style.cardContainer}>
+            <div
+                className={style.close}
+                onClick={()=>{
+                    onClose(currentCity)
+                }}
+            >
+                X
+            </div>
             {
                 currentWeather.temperature ?
                     <div>
