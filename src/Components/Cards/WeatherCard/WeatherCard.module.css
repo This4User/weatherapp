@@ -1,0 +1,30 @@
+
+.cardContainer{
+    padding: 15px;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: wheat;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.temperature{
+    font-size: 56px;
+}
+
+.city{
+    font-size: 36px;
+    align-self: end;
+}
+
+.description{
+    font-size: 24px;
+}
