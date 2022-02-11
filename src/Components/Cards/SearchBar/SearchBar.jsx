@@ -2,7 +2,12 @@ import style from './SearchBar.module.css'
 
 const SearchBar = ({value, onChange, onClick}) => {
     return (
-        <div className={style.container}>
+        <form className={style.container}
+              onSubmit={(e)=>{
+                  e.preventDefault()
+                  onClick()
+              }}
+        >
             <input
                 className={style.searchBar}
                 type="text"
@@ -11,14 +16,12 @@ const SearchBar = ({value, onChange, onClick}) => {
                     onChange(e.target.value)
                 }}/>
             <button
-                disabled={ value === ''}
+                disabled={value === ''}
                 className={style.button}
-                onClick={() => {
-                    onClick()
-                }}>
+            >
                 +
             </button>
-        </div>
+        </form>
     )
 }
 
